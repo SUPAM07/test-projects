@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1218</width>
+    <height>1199</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AIUS v1.0 — IEC 61850 Attack &amp; Intrusion Utility Suite</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QMainWindow { background-color: #0d1117; }
+QWidget#centralwidget { background-color: #0d1117; }
+
+/* ── Brand header ───────────────────────────────────────── */
+QWidget#brandHeader {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #0d1117, stop:0.3 #111820, stop:1 #0d1117);
+    border-bottom: 1px solid #21262d;
+}
+QLabel#lblAppName {
+    color: #58a6ff;
+    font-family: &quot;Consolas&quot;, &quot;Courier New&quot;, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+QLabel#lblAppSub {
+    color: #3fb950;
+    font-family: &quot;Consolas&quot;, &quot;Courier New&quot;, monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+QLabel#lblCreditLine {
+    color: #484f58;
+    font-size: 10px;
+    font-style: italic;
+}
+QLabel#lblSponsor {
+    color: #d4a72c;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+QLabel#lblVersion {
+    color: #30363d;
+    font-family: &quot;Consolas&quot;, &quot;Courier New&quot;, monospace;
+    font-size: 9px;
+}
+
+/* ── Groups ─────────────────────────────────────────────── */
+QGroupBox {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding-top: 8px;
+    color: #58a6ff;
+    font-weight: bold;
+    font-size: 11px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 6px;
+    color: #58a6ff;
+    font-size: 11px;
+    font-weight: bold;
+}
+QGroupBox:disabled { border: 1px solid #21262d; background-color: #0d1117; }
+QGroupBox:disabled &gt; QGroupBox::title { color: #3d444d; }
+
+/* ── Controls ───────────────────────────────────────────── */
+QLabel { color: #8b949e; font-size: 11px; }
+QLineEdit {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    color: #e6edf3;
+    padding: 4px 8px;
+    font-size: 11px;
+    selection-background-color: #1f6feb;
+}
+QLineEdit:focus { border: 1px solid #58a6ff; }
+QLineEdit:disabled { background-color: #161b22; color: #3d444d; border-color: #21262d; }
+QComboBox {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    color: #e6edf3;
+    padding: 4px 8px;
+    font-size: 11px;
+    min-width: 80px;
+}
+QComboBox:focus { border: 1px solid #58a6ff; }
+QComboBox:disabled { background-color: #161b22; color: #3d444d; border-color: #21262d; }
+QComboBox::drop-down { border: none; width: 20px; }
+QComboBox QAbstractItemView {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+    selection-background-color: #1f6feb;
+}
+QPushButton {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    color: #e6edf3;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: bold;
+}
+QPushButton:hover { background-color: #30363d; border-color: #58a6ff; }
+QPushButton:disabled { background-color: #161b22; color: #3d444d; border-color: #21262d; }
+QPushButton#btnLoad { background-color: #1f6feb; border: 1px solid #388bfd; color: #ffffff; }
+QPushButton#btnLoad:hover { background-color: #388bfd; }
+QPushButton#btnSavePcap { background-color: #238636; border: 1px solid #2ea043; color: #ffffff; }
+QPushButton#btnSavePcap:hover { background-color: #2ea043; }
+QPushButton#btnSaveWholeTCP { background-color: #6e40c9; border: 1px solid #8957e5; color: #ffffff; }
+QPushButton#btnSaveWholeTCP:hover { background-color: #8957e5; }
+QPushButton#btnPrintTLV { background-color: #b08800; border: 1px solid #d4a72c; color: #ffffff; }
+QPushButton#btnPrintTLV:hover { background-color: #d4a72c; }
+QPushButton#btnAddTLV { background-color: #21262d; border: 1px solid #30363d; color: #58a6ff; }
+QPushButton#btnAddTLV:hover { background-color: #30363d; }
+QCheckBox { color: #8b949e; font-size: 11px; spacing: 6px; }
+QCheckBox::indicator { width: 14px; height: 14px; border: 1px solid #30363d; border-radius: 3px; background-color: #21262d; }
+QCheckBox::indicator:checked { background-color: #1f6feb; border-color: #58a6ff; }
+QCheckBox:disabled { color: #3d444d; }
+QCheckBox::indicator:disabled { background-color: #161b22; border-color: #21262d; }
+QRadioButton { color: #8b949e; font-size: 11px; spacing: 6px; }
+QRadioButton::indicator { width: 14px; height: 14px; border: 1px solid #30363d; border-radius: 7px; background-color: #21262d; }
+QRadioButton::indicator:checked { background-color: #1f6feb; border-color: #58a6ff; }
+QTextEdit#terminalBox, QTextEdit#quickTerminal {
+    background-color: #010409;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    color: #3fb950;
+    font-family: &quot;Consolas&quot;, &quot;Courier New&quot;, monospace;
+    font-size: 11px;
+    padding: 6px;
+}
+QScrollBar:vertical { background: #161b22; width: 8px; border-radius: 4px; }
+QScrollBar::handle:vertical { background: #30363d; border-radius: 4px; min-height: 20px; }
+QScrollBar::handle:vertical:hover { background: #58a6ff; }
+QTabWidget::pane { border: 1px solid #30363d; background-color: #0d1117; }
+QTabBar::tab { background-color: #161b22; color: #8b949e; padding: 6px 16px; border: 1px solid #30363d; border-bottom: none; border-top-left-radius: 4px; border-top-right-radius: 4px; font-size: 11px; }
+QTabBar::tab:selected { background-color: #0d1117; color: #58a6ff; border-bottom: 2px solid #58a6ff; }
+QToolTip { background-color: #21262d; color: #e6edf3; border: 1px solid #58a6ff; border-radius: 4px; padding: 4px 8px; font-size: 11px; }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="contentsMargins" stdset="0">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>0</width>
+      <height>0</height>
+     </rect>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="brandLayout">
+      <property name="spacing">
+       <number>14</number>
+      </property>
+      <property name="leftMargin">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>6</number>
+      </property>
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <property name="contentsMargins" stdset="0">
+       <rect>
+        <x>14</x>
+        <y>8</y>
+        <width>14</width>
+        <height>8</height>
+       </rect>
+      </property>
+      <item>
+       <layout class="QVBoxLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="lblAppName">
+          <property name="styleSheet">
+           <string notr="true">color: #bf247a; </string>
+          </property>
+          <property name="text">
+           <string>AIUS v1.0</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblAppSub">
+          <property name="text">
+           <string>ATTACK &amp; INTRUSION UTILITY SUITE  ·  IEC 61850</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblVersion">
+          <property name="text">
+           <string>© 2026  |  Passive PCAP Editor  +  Live MMS MITM Engine</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>iisc1.png</pixmap>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>embsys5.png</pixmap>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="lblCreditDev">
+          <property name="styleSheet">
+           <string notr="true">color: #8b949e; font-size: 14px;</string>
+          </property>
+          <property name="text">
+           <string>Developed by  Supam Roy</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblCreditConcept">
+          <property name="styleSheet">
+           <string notr="true">color: #6e7681; font-size: 9px;</string>
+          </property>
+          <property name="text">
+           <string>Concept  by Kishan Baranwal  ·  Co-guide  Rakshit R.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblCreditSuper">
+          <property name="styleSheet">
+           <string notr="true">color: #6e7681; font-size: 9px;</string>
+          </property>
+          <property name="text">
+           <string>Supervised by  Prof. Haresh Dagale</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblSponsor">
+          <property name="text">
+           <string>⚡ Sponsored by  PGCoE — PowerGrid Centre of Excellence in Cybersecurity</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QFrame" name="headerAccent">
+      <property name="styleSheet">
+       <string>background: qlineargradient(x1:0,y1:0,x2:1,y2:0, stop:0 #0d1117, stop:0.2 #1f6feb, stop:0.5 #3fb950, stop:0.8 #d4a72c, stop:1 #0d1117);</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="contentLayout">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <property name="contentsMargins" stdset="0">
+       <rect>
+        <x>12</x>
+        <y>10</y>
+        <width>12</width>
+        <height>8</height>
+       </rect>
+      </property>
+      <item>
+       <widget class="QGroupBox" name="grpTop">
+        <property name="title">
+         <string>Passive PCAP Edition</string>
+        </property>
+        <layout class="QHBoxLayout" name="topLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QLabel" name="lblFileLocation">
+             <property name="text">
+              <string>PCAP File Location</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QLineEdit" name="lineEditFilePath">
+               <property name="placeholderText">
+                <string>Select packet file location...</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnBrowse">
+               <property name="text">
+                <string>Browse</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QLabel" name="lblPacketType">
+             <property name="text">
+              <string>Packet Type</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboPacketType">
+             <property name="toolTip">
+              <string>MMS enables IP/TCP layers. GOOSE and SV grey them out.</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>MMS</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>GOOSE</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>SV</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QLabel" name="lblPacketNo">
+             <property name="text">
+              <string>Packet No.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboPacketNo">
+             <property name="toolTip">
+              <string>Populated after PCAP is loaded</string>
+             </property>
+             <property name="editable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QLabel" name="lblLoadSpacer">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLoad">
+             <property name="toolTip">
+              <string>Populates all fields and refreshes TLV Tag No. and Position dropdowns from the selected packet</string>
+             </property>
+             <property name="text">
+              <string>⬇  Load Packet</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tabLayers">
+         <attribute name="title">
+          <string>Network Layers</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="layersLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <property name="contentsMargins" stdset="0">
+           <rect>
+            <x>8</x>
+            <y>8</y>
+            <width>8</width>
+            <height>8</height>
+           </rect>
+          </property>
+          <item>
+           <layout class="QHBoxLayout">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="grpEthernet">
+              <property name="title">
+               <string>Ethernet Layer</string>
+              </property>
+              <layout class="QFormLayout">
+               <property name="horizontalSpacing">
+                <number>10</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>8</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="lblSrcMAC">
+                 <property name="text">
+                  <string>Src MAC</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="lineEditSrcMAC">
+                 <property name="placeholderText">
+                  <string>By default (editable)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="lblDstMAC">
+                 <property name="text">
+                  <string>Dst MAC</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLineEdit" name="lineEditDstMAC">
+                 <property name="placeholderText">
+                  <string>By default (editable)</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="grpAppLength">
+              <property name="title">
+               <string>Application Fields</string>
+              </property>
+              <layout class="QGridLayout" name="appLenGrid">
+               <property name="horizontalSpacing">
+                <number>10</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>8</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="lblAppID">
+                 <property name="text">
+                  <string>App ID</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" colspan="3">
+                <widget class="QLineEdit" name="lineEditAppID">
+                 <property name="toolTip">
+                  <string>Application Identifier — present in GOOSE, SV and MMS frames</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>e.g. 0x0001 (hex)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="lblLength">
+                 <property name="text">
+                  <string>Length</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QRadioButton" name="radioLengthAuto">
+                 <property name="toolTip">
+                  <string>Length field is auto-computed on save</string>
+                 </property>
+                 <property name="text">
+                  <string>Auto</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QRadioButton" name="radioLengthManual">
+                 <property name="toolTip">
+                  <string>Manually override the length field value</string>
+                 </property>
+                 <property name="text">
+                  <string>Manual</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLineEdit" name="lineEditLength">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="toolTip">
+                  <string>Editable only when Manual mode is selected</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Auto-computed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0" colspan="4">
+                <widget class="QLabel" name="lblLengthNote">
+                 <property name="styleSheet">
+                  <string>color: #484f58; font-size: 10px; font-style: italic;</string>
+                 </property>
+                 <property name="text">
+                  <string>ℹ  Auto mode recalculates length on every save. Switch to Manual to override.</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="grpIP">
+            <property name="title">
+             <string>IP Layer  —  enabled for MMS only</string>
+            </property>
+            <layout class="QGridLayout" name="ipGrid">
+             <property name="horizontalSpacing">
+              <number>12</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>8</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="lblIPSrc">
+               <property name="text">
+                <string>IP Src</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="lineEditIPSrc">
+               <property name="placeholderText">
+                <string>e.g. 192.168.1.1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="lblIPDst">
+               <property name="text">
+                <string>IP Dst</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QLineEdit" name="lineEditIPDst">
+               <property name="placeholderText">
+                <string>e.g. 192.168.1.2</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4">
+              <widget class="QLabel" name="lblTTL">
+               <property name="text">
+                <string>TTL</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="5">
+              <widget class="QLineEdit" name="lineEditTTL">
+               <property name="placeholderText">
+                <string>e.g. 64</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="grpTCP">
+            <property name="title">
+             <string>TCP Layer  —  enabled for MMS only</string>
+            </property>
+            <layout class="QGridLayout" name="tcpGrid">
+             <property name="horizontalSpacing">
+              <number>12</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>8</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="lblSrcPort">
+               <property name="text">
+                <string>Src Port</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="lineEditSrcPort">
+               <property name="placeholderText">
+                <string>e.g. 102</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="lblDstPort">
+               <property name="text">
+                <string>Dst Port</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QLineEdit" name="lineEditDstPort">
+               <property name="placeholderText">
+                <string>e.g. 50000</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="lblSeqNo">
+               <property name="text">
+                <string>Seq No.</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="lineEditSeqNo">
+               <property name="placeholderText">
+                <string>Sequence number</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="lblAckNo">
+               <property name="text">
+                <string>Ack No.</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QLineEdit" name="lineEditAckNo">
+               <property name="placeholderText">
+                <string>Acknowledge number</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="lblFlags">
+               <property name="text">
+                <string>Flags</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="lineEditFlags">
+               <property name="placeholderText">
+                <string>Hex value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QLabel" name="lblWindowSize">
+               <property name="text">
+                <string>Window Size</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
+              <widget class="QLineEdit" name="lineEditWindowSize">
+               <property name="placeholderText">
+                <string>e.g. 65535</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="lblWindowScale">
+               <property name="text">
+                <string>Window Scaling Factor</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="3">
+              <widget class="QLineEdit" name="lineEditWindowScale">
+               <property name="placeholderText">
+                <string>e.g. 128</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="grpTLV">
+            <property name="title">
+             <string>TLV — Edit Existing Tag</string>
+            </property>
+            <layout class="QGridLayout" name="tlvGrid">
+             <property name="horizontalSpacing">
+              <number>10</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>8</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="lblTagNo">
+               <property name="text">
+                <string>Tag No.</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="comboTagNo">
+               <property name="toolTip">
+                <string>Auto-populated on Load Packet — lists all unique TLV tag numbers found in the loaded packet</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="lblPositionNo">
+               <property name="text">
+                <string>Occurrence</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QComboBox" name="comboPositionNo">
+               <property name="toolTip">
+                <string>Updated when Tag No. changes — lists how many times the selected tag appears</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4">
+              <widget class="QLabel" name="lblTLVValue">
+               <property name="text">
+                <string>Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="5">
+              <widget class="QLineEdit" name="lineEditTLVValue">
+               <property name="placeholderText">
+                <string>Hex / ASCII</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="lblTLVType">
+               <property name="text">
+                <string>Type</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" colspan="2">
+              <widget class="QComboBox" name="comboTLVType">
+               <item>
+                <property name="text">
+                 <string>Primitive</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Constructed</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="3" colspan="3">
+              <widget class="QLabel" name="lblTLVNote">
+               <property name="styleSheet">
+                <string>color: #484f58; font-size: 10px; font-style: italic;</string>
+               </property>
+               <property name="text">
+                <string>ℹ  Tag No. and Occurrence dropdowns refresh automatically when Load Packet is clicked.</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="grpAddTLV">
+            <property name="title">
+             <string>Add New TLV Tag  —  Insert After Anchor Tag</string>
+            </property>
+            <layout class="QGridLayout" name="addTLVGrid">
+             <property name="horizontalSpacing">
+              <number>10</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>8</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="lblNewTagNo">
+               <property name="text">
+                <string>New Tag No.</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="lineEditNewTagNo">
+               <property name="placeholderText">
+                <string>e.g. 0x61</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="lblNewValue">
+               <property name="text">
+                <string>Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3" colspan="4">
+              <widget class="QLineEdit" name="lineEditNewValue">
+               <property name="placeholderText">
+                <string>Hex / ASCII value for the new tag</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="7">
+              <widget class="QLabel" name="lblAnchorHeader">
+               <property name="styleSheet">
+                <string>color: #58a6ff; font-size: 10px; font-weight: bold; padding: 2px 0;</string>
+               </property>
+               <property name="text">
+                <string>  Anchor positions  —  new tag is inserted AFTER the Before anchor and BEFORE the After anchor</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="lblBeforeLabel">
+               <property name="styleSheet">
+                <string>color: #3fb950; font-weight: bold;</string>
+               </property>
+               <property name="text">
+                <string>Before  ↓</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="lblBeforeTagNo">
+               <property name="text">
+                <string>Tag No.</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QComboBox" name="comboBeforeTagNo">
+               <property name="toolTip">
+                <string>New tag is inserted immediately after this tag's occurrence</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
+              <widget class="QLabel" name="lblBeforeOcc">
+               <property name="text">
+                <string>Occurrence</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="4">
+              <widget class="QComboBox" name="comboBeforeOccurrence">
+               <property name="toolTip">
+                <string>Which occurrence of the Before tag to anchor after</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="5">
+              <widget class="QPushButton" name="btnAddTLV">
+               <property name="toolTip">
+                <string>Insert the new TLV tag between the Before and After anchors</string>
+               </property>
+               <property name="text">
+                <string>+ Insert Tag</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="6">
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tabOutput">
+         <attribute name="title">
+          <string>Output &amp; Save</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="outputLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <property name="contentsMargins" stdset="0">
+           <rect>
+            <x>8</x>
+            <y>8</y>
+            <width>8</width>
+            <height>8</height>
+           </rect>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="grpSaveOptions">
+            <property name="title">
+             <string>Save Options</string>
+            </property>
+            <layout class="QGridLayout" name="saveGrid">
+             <property name="horizontalSpacing">
+              <number>14</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>10</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QPushButton" name="btnSavePcap">
+               <property name="text">
+                <string>💾  Save PCAP</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="btnSaveWholeTCP">
+               <property name="toolTip">
+                <string>Only enabled for MMS packet type</string>
+               </property>
+               <property name="text">
+                <string>💾  Save Whole TCP Session</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="btnLengthRange">
+               <property name="text">
+                <string>Length Range</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QCheckBox" name="chkSaveModifiedOnly">
+               <property name="text">
+                <string>Save Modified Packets Only</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QPushButton" name="btnPrintTLV">
+               <property name="text">
+                <string>🖨  Print TLV</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" colspan="2">
+              <layout class="QHBoxLayout">
+               <item>
+                <widget class="QLabel" name="lblOutputFile">
+                 <property name="text">
+                  <string>Output File Name</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditOutputFile">
+                 <property name="placeholderText">
+                  <string>output.pcap</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="3">
+              <spacer>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="grpTerminal">
+            <property name="title">
+             <string>Terminal Output</string>
+            </property>
+            <layout class="QVBoxLayout" name="terminalVBox">
+             <item>
+              <layout class="QHBoxLayout">
+               <item>
+                <spacer>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnClearTerminal">
+                 <property name="text">
+                  <string>Clear</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="terminalBox">
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>[AIUS v1.0] Ready. Load a PCAP file to begin...
+</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="grpQuickTerminal">
+        <property name="title">
+         <string>Quick Log</string>
+        </property>
+        <layout class="QVBoxLayout">
+         <item>
+          <widget class="QTextEdit" name="quickTerminal">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Status messages will appear here...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="footerLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="leftMargin">
+         <number>9</number>
+        </property>
+        <property name="topMargin">
+         <number>9</number>
+        </property>
+        <property name="rightMargin">
+         <number>9</number>
+        </property>
+        <property name="bottomMargin">
+         <number>9</number>
+        </property>
+        <property name="contentsMargins" stdset="0">
+         <rect>
+          <x>4</x>
+          <y>0</y>
+          <width>4</width>
+          <height>0</height>
+         </rect>
+        </property>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblFooterLeft">
+          <property name="styleSheet">
+           <string notr="true">color: #30363d; font-size: 12px; font-family: &quot;Consolas&quot;, monospace;</string>
+          </property>
+          <property name="text">
+           <string>AIUS v1.0  ·  © 2026  Ayush Chand Ramola  ·  IISc | PGCoE</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1218</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string>
+QMenuBar { background-color: #161b22; color: #8b949e; font-size: 11px; border-bottom: 1px solid #21262d; }
+QMenuBar::item:selected { background-color: #21262d; color: #e6edf3; }
+QMenu { background-color: #161b22; color: #8b949e; border: 1px solid #30363d; }
+QMenu::item:selected { background-color: #1f6feb; color: #ffffff; }
+QMenu::separator { height: 1px; background: #30363d; margin: 4px 0; }
+    </string>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionPrintTLV"/>
+    <addaction name="actionClearLog"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string>QStatusBar { background-color: #161b22; color: #484f58; font-size: 10px; border-top: 1px solid #21262d; } QStatusBar::item { border: none; }</string>
+   </property>
+  </widget>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open PCAP...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save PCAP...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionPrintTLV">
+   <property name="text">
+    <string>Print TLV Structure</string>
+   </property>
+  </action>
+  <action name="actionClearLog">
+   <property name="text">
+    <string>Clear Terminal Log</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About AIUS v1.0</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
